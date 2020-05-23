@@ -1,11 +1,9 @@
 import React from 'react'
-
+import Hero from '../components/Hero'
 //phím tắt: rafc
 export const Rooms = () => {
   return (
-    <div>
-      rooms
-    </div>
+    <Hero hero="roomsHero"/>
   )
 }
 
