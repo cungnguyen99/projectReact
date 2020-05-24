@@ -7,7 +7,7 @@ import Error from './pages/Error'
 import SingleRoom from './pages/SingleRoom'
 
 
-import { Switch, Route, Router } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 
 import NavBar from './components/NavBar'
@@ -23,7 +23,7 @@ function App() {
             phòng thì đường dẫn sẽ là room/id_phòng chứ không phải nhảy sang một route riêng. Ta phải viết
             hàm để Router này biết biến slug là gì để còn render ra  */}
       <Route exact path='/rooms/:slug' component={SingleRoom}/>
-      <Router component={Error}/>
+      <Route component={Error}/>
     </Switch>
    </>
   );

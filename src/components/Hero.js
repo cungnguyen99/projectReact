@@ -9,6 +9,10 @@ import React from 'react'
  * ảnh bìa là ảnh defaultBcg. còn ở trang rooms lại truyền hero vào là roomsHero nên có css 
  * background-image: url("./images/room-2.jpeg") nên ảnh bìa sẽ là room-2
  */
+//children: một thuộc tính có sẵn của props. Xem bài 18 coder là hiểu.<div> adb vchdb</div>
+//thì phần ở giữa của 2 thẻ div ('abc vchdb props') là props children.
+//Ỏ bên kia phần trong Hero chính là props children. hay nói cách khác chính 
+//children của Hero chính là component Banner
 export default function Hero({children, hero}) {
   return (
     <header className={hero}>
