@@ -165,14 +165,14 @@ h6 {
   justify-content: center;
 }
 .roomsHero {
-  background-image: url("./images/room-2.jpeg");
+  background-image: url("./images/Tartan-Florio-2018_-330.jpeg");
   min-height: 60vh;
 }
 /* End of Hero */
 /* Banner */
 .banner {
   display: inline-block;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.35);
   color: var(--mainWhite);
   padding: 2rem 1rem;
   text-align: center;
