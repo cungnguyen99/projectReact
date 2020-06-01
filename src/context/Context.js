@@ -3,20 +3,41 @@ import items from '../data'
 const RoomContext = React.createContext();
 class RoomProvider extends Component {
   state={
+    //dùng trước
     rooms: [],
     sortedRooms: [],
     featuredRooms: [],
-    loading: true
+    loading: true,
+
+    //dùng sau
+    type: "all",
+    capacity: 0,
+    price: 0,
+    minPrice:0,
+    maxPrice:0,
+    minSize: 0,
+    maxSize: 0,
+    breackfast:false,
+    pets:false
   }
   //get Data
   componentDidMount(){
     let rooms=this.formatData(items)
     let featuredRooms=rooms.filter(room=>room.featured===true)
+
+    //lấy ra giá lớn nhất
+    let maxPrice=Math.max(...rooms.map(item=>item.price))
+    //lấy ra giá bé nhất
+    let maxSize=Math.min(...rooms.map(item=>item.size))
+
     this.setState({
       rooms: rooms,
       featuredRooms: featuredRooms,
       sortedRooms: rooms,
-      loading: false
+      loading: false,
+      price: maxPrice,
+      maxPrice,
+      maxSize
     })
   }
   
@@ -40,9 +61,38 @@ class RoomProvider extends Component {
     const room=tempRooms.find(room=>room.slug===slug)
     return room
   }
+
+  handleChange=event=>{
+    /**
+     * lấy ra kiểu, tên, giá trị của sự kiện envent
+     * const type=event.target.type
+     * const name=event.target.name
+     * const value=event.target.value
+     */
+    const target=event.target
+    const value=event.type==="checkbox"?target.checked:target.value
+    const name=event.target.name
+    this.setState({
+      [name]:value
+      //khi nhấn sự kiện thì gọi hàm filterrooms ra
+    },this.filterRooms)
+
+  }
+
+  filterRooms=()=>{
+    let { rooms, type, capacity, price, minSize, maxSize, breackfast, pets}=this.state
+    let tempRooms=[...rooms]
+    if(type!=='all'){
+      tempRooms=tempRooms.filter(room=>room.type===type)
+    }
+    this.setState({
+      sortedRooms: tempRooms
+    })
+  }
   render() {
     return (
-      <RoomContext.Provider value={{...this.state, getRoom: this.getRoom}}>
+      <RoomContext.Provider value={{...this.state, getRoom: this.getRoom, handleChange:
+      this.handleChange}}>
         {this.props.children}
       </RoomContext.Provider>
     )
