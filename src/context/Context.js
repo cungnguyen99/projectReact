@@ -70,7 +70,7 @@ class RoomProvider extends Component {
      * const value=event.target.value
      */
     const target=event.target
-    const value=event.type==="checkbox"?target.checked:target.value
+    const value=target.type==="checkbox"?target.checked:target.value
     const name=event.target.name
     this.setState({
       [name]:value
@@ -80,15 +80,52 @@ class RoomProvider extends Component {
   }
 
   filterRooms=()=>{
-    let { rooms, type, capacity, price, minSize, maxSize, breackfast, pets}=this.state
+    let { rooms, type, capacity, price, minSize, maxSize, breakfast, pets}=this.state
+    //get all of rooms
     let tempRooms=[...rooms]
+
+    //tranforms value
+    capacity=parseInt(capacity)//do ở trong data lưu là int nhưng trên web lại hiện ra strin
+    price=parseInt(price)
+
+    //fil by type
     if(type!=='all'){
       tempRooms=tempRooms.filter(room=>room.type===type)
+    }
+
+    //fil by capacity
+    if(capacity!==1){
+      //n là xe chứa htai nên nếu chọn những xe chưa lớn hơn sẽ hiện ra các xe có sức chưa>xe htai
+      /**
+       * Lấy chính cai temprooms trên kia để fil tiếp vì nếu ngta chọn type là a thì
+       * ở if trên cũng đã lấy chính cái temproom để fil type theo a, sau đó lại lấy chính cái
+       * temproom sau khi fil theo type để fil theo cái capacity thì sẽ lấy được ra các xe 
+       * vừa fil theo type vừa file theo capacity
+       */
+      tempRooms=tempRooms.filter(room=>room.capacity>=capacity);
+    }
+
+    
+    //fil by price
+    tempRooms=tempRooms.filter(room=>room.price<=price)
+
+    //fil by  size
+    tempRooms=tempRooms.filter(room=>minSize<=room.size&&room.size<=maxSize)
+
+    //fil by breakfast
+    if(breakfast){
+      tempRooms=tempRooms.filter(room=>room.breakfast===true)
+    }
+    
+     //fil by pets
+     if(pets){
+      tempRooms=tempRooms.filter(room=>room.pets===true)
     }
     this.setState({
       sortedRooms: tempRooms
     })
   }
+
   render() {
     return (
       <RoomContext.Provider value={{...this.state, getRoom: this.getRoom, handleChange:
