@@ -28,7 +28,9 @@ class RoomProvider extends Component {
     //lấy ra giá lớn nhất
     let maxPrice=Math.max(...rooms.map(item=>item.price))
     //lấy ra giá bé nhất
-    let maxSize=Math.min(...rooms.map(item=>item.size))
+    let maxSize=Math.max(...rooms.map(item=>item.size))
+    
+    console.log(maxSize)
 
     this.setState({
       rooms: rooms,
