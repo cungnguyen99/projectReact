@@ -514,3 +514,8 @@ h6 {
   }
 }
 /* end of rooms fitler*/
+/* Info */
+.info h2{
+  font-weight: 800 !important;
+}
+/* end of Info */
