@@ -515,7 +515,44 @@ h6 {
 }
 /* end of rooms fitler*/
 /* Info */
-.info h2{
-  font-weight: 800 !important;
+.info-home{
+  padding: 5rem 0;
+}
+.info-home .intro-center{
+  width: 75vw;
+  margin: 6% auto;
+}
+.info-home .flex-row{
+  display: flex;
+  justify-content: space-between !important;
+  align-items: center;
+}
+.info-home .wrapp-intro{
+  flex-direction: row-reverse;
+}
+.info-home h2{
+  font-size: 3rem;
+}
+.info-home .img-intro{
+  position: relative;
+}
+.info-home .img-intro img{
+  width: 100%;
+  display: block;
+  border-radius: 50%;
+}
+.info-home .text-intro{
+  width: 90%;
+}
+.info-home .text-intro h2{
+  width: 80%;
+  margin-bottom: 0.35rem;
+}
+.info-home .text-intro p{
+  width: 75%;
+  font-size: .9rem;
+}
+.info-home .text-right .text-intro{
+  transform: translateX(20%);
 }
 /* end of Info */

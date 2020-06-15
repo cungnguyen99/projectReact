@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import img1 from '../images/details-2.jpeg'
-import img2 from '../images/details-3.jpeg'
-import img3 from '../images/details-4.jpeg'
+import img1 from '../images/01.jpg'
+import img2 from '../images/02.jpg'
+import img3 from '../images/03.jpg'
 export default class Info extends Component {
   state = {
     services: [
@@ -23,26 +23,22 @@ export default class Info extends Component {
   }
   render() {
     return (
-      <section className="info">
-        <div className='container'>
+      <section className="info-home">
             {
               this.state.services.map((item, index) => {
-                return  <div className={{index}===1?"row d-flex flex-row-reverse":"row"} key={index}>                  
-                 <div class="col-lg-6">
-                  <div className="p-5">
+                return  <div className=
+                {index!==1?"intro-center flex-row wrapp-intro":
+                "intro-center text-right flex-row"} key={index}>                  
+                 <div class="img-intro">
                     <img className="img-fluid rounded-circle" src={item.image} alt="" />
-                  </div>
                 </div>
-                  <div className="col-lg-6">
-                    <div className="p-5">
-                      <h2 className="display-4">{item.title}</h2>
+                  <div className="text-intro">
+                      <h2>{item.title}</h2>
                       <p>{item.info}</p>
-                    </div>
                   </div>
                   </div>
                   })
               }
-          </div>
       </section>
     )
   }
