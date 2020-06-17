@@ -7,7 +7,7 @@ export default class Info extends Component {
     services: [
       {
         image: img1,
-        title: 'For those about to rock...',
+        title: 'For those about to cars...',
         info: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.'
       },
       {
@@ -17,7 +17,7 @@ export default class Info extends Component {
       },
       {
         image: img3,
-        title: 'Let there be rock!',
+        title: 'Let there be car!',
         info: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.'
       }]
   }
